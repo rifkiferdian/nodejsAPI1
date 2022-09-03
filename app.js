@@ -16,8 +16,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+
 app.use((req,res,next) => {
-    const err = new Error('Not Found....!');
+    const err = new Error('Not Found...!');
     err.status = 404;
     next(err);
 })
@@ -32,25 +35,5 @@ app.use((err,req,res,next) => {
     })
     console.log(err);
 })
-
-
-
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
-
-// app.use((req,res,next) => {
-//     const er = new Error('Page ngk ada !');
-//     er.status = 400;
-//     next(er);
-// })
-
-// app.use((error,req,res,next) => {
-//     res.status(error.status || 500);
-//     res.json({
-//         error:{
-//             message:error.message
-//         }
-//     })
-// });
 
 module.exports = app;

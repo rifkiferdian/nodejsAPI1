@@ -3,7 +3,6 @@ var router = express.Router();
 const Validator = require("fastest-validator");
 const { Users } = require('../models');
 const { Sequelize } = require("sequelize");
-const { Pool, Client } = require('pg');
 
 
 const v = new Validator();

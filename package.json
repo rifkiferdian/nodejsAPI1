@@ -12,6 +12,7 @@
     "dotenv": "^16.0.2",
     "express": "~4.16.1",
     "fastest-validator": "^1.14.0",
+    "jsonwebtoken": "^8.5.1",
     "mariadb": "^3.0.1",
     "morgan": "~1.9.1",
     "pg": "^8.8.0",

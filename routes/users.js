@@ -2,26 +2,42 @@ var express = require('express');
 var router = express.Router();
 const Validator = require("fastest-validator");
 const { Users } = require('../models');
-const { Op } = require("sequelize");
+const { Sequelize } = require("sequelize");
+const { Pool, Client } = require('pg');
 
 
 const v = new Validator();
 
-
 /* GET users listing. */
-router.get('/', async (req, res) => {
+router.get('/', async (req, res,next) => {
 
   const users = await Users.findAll();
   // console.log("All users:", JSON.stringify(users, null, 2));
   res.status(200).json(users);
 
+
+// MENCOBA KONEKSI POSTGRESQL
+  // const sequelize = new Sequelize('latihanDB', 'postgres', '123', {
+  //   host: 'localhost',
+  //   posr: 5432,
+  //   dialect: 'postgres',
+  //   logging: false
+  // })
+
+  // try {
+  //   await sequelize.authenticate();
+  //   console.log('Connection has been established successfully.');
+  // } catch (error) {
+  //   console.error('Unable to connect to the database:', error);
+  //   console.log('asdasdasda');
+  // }
+
+  // res.send('ok');
+
 });
 
 /* POST users listing. */
 router.post('/', async (req, res) => {
-  // res.send('Hello world..!');
-  // res.send(process.env.APP_NAME);
-
   const schema = {
     nama: { type: "string", min: 3, max: 255 },
     alamat: { type: "string" },

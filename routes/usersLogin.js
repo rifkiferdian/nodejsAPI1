@@ -28,6 +28,7 @@ router.post('/', async (req, res, next) => {
 
   const usersId = await Users.findByPk(req.body.id_user);
   if(!usersId) return res.status(404).json({message:"Id User Tidak ditemukan..!"});
+  if(usersId) return res.status(404).json({message:"Id User Sudah mempunyai Login..!"});
  
   const check = v.validate(req.body,schema);
   if (check.length){

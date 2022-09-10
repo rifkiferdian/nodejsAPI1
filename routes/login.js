@@ -13,8 +13,8 @@ const v = new Validator();
 /* GET users listing. */
 router.post('/',async (req, res, next) => {
 
-  const asd = await generateToken();
-  res.status(200).json({message:asd});
+  const accessToken = await generateToken();
+  res.status(200).json({message:accessToken});
 
 });
 
